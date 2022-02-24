@@ -16,8 +16,6 @@
   "commitBodyTable": true,
   "enabledManagers": [
     "composer",
-    "dockerfile",
-    "docker-compose",
     "github-actions"
   ],
   "lockFileMaintenance": {
