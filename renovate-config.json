@@ -1,0 +1,50 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "Default configuration for repositories in the patchlevel organisation",
+  "extends": [
+    ":dependencyDashboard",
+    ":ignoreModulesAndTests",
+    ":automergeMinor",
+    ":automergeBranch",
+    ":prNotPending",
+    ":rebaseStalePrs",
+    ":separateMajorReleases",
+    ":combinePatchMinorReleases",
+    ":enableVulnerabilityAlerts",
+    ":timezone(UTC)",
+    ":gitSignOff",
+    ":label(renovate)",
+    "group:allNonMajor"
+  ],
+  "commitBodyTable": true,
+  "enabledManagers": [
+    "composer",
+    "dockerfile",
+    "docker-compose",
+    "github-actions"
+  ],
+  "lockFileMaintenance": {
+    "enabled": true,
+    "extends": [
+      "schedule:daily"
+    ]
+  },
+  "platformAutomerge": true,
+  "rangeStrategy": "replace",
+  "rollbackPrs": true,
+  "packageRules": [
+    {
+      "matchDepTypes": [
+        "require"
+      ],
+      "rangeStrategy": "widen"
+    },
+    {
+      "matchPackagePatterns": [
+        "^symfony/"
+      ],
+      "groupSlug": "symfony",
+      "groupName": "Symfony packages"
+    }
+  ]
+}
