@@ -38,6 +38,13 @@
         "require"
       ],
       "rangeStrategy": "widen"
-    }
+    },
+    {
+      "matchPackagePatterns": [
+        "^symfony/"
+      ],
+      "groupSlug": "symfony",
+      "groupName": "Symfony packages"
+    },
   ]
 }
