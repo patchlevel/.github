@@ -4,9 +4,6 @@
   "extends": [
     ":dependencyDashboard",
     ":ignoreModulesAndTests",
-    ":automergeMinor",
-    ":automergeBranch",
-    ":prNotPending",
     ":rebaseStalePrs",
     ":separateMajorReleases",
     ":combinePatchMinorReleases",
