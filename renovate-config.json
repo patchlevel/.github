@@ -29,7 +29,7 @@
       "schedule:daily"
     ]
   },
-  "platformAutomerge": true,,
+  "platformAutomerge": true,
   "rangeStrategy": "replace",
   "rollbackPrs": true,
   "packageRules": [
