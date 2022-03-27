@@ -11,7 +11,10 @@
     ":timezone(UTC)",
     ":gitSignOff",
     ":label(renovate)",
-    "group:allNonMajor"
+    "group:allNonMajor",
+    ":automergeMinor",
+    ":automergeBranch",
+    ":prNotPending"
   ],
   "commitBodyTable": true,
   "enabledManagers": [
