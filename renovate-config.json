@@ -32,6 +32,18 @@
   "rollbackPrs": true,
   "packageRules": [
     {
+      "matchPackageNames": [
+        "php"
+      ],
+      "extends": [
+        ":automergeDisabled",
+        ":automergePr"
+      ],
+      "ignoreUnstable": false,
+      "groupName": "PHP",
+      "rangeStrategy": "widen"
+    },
+    {
       "matchDepTypes": [
         "require"
       ],
