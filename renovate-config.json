@@ -19,7 +19,8 @@
   "commitBodyTable": true,
   "enabledManagers": [
     "composer",
-    "github-actions"
+    "github-actions",
+    "pip_requirements"
   ],
   "lockFileMaintenance": {
     "enabled": true,
