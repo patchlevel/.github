@@ -21,7 +21,8 @@
   "enabledManagers": [
     "composer",
     "github-actions",
-    "pip_requirements"
+    "pip_requirements",
+    "terraform"
   ],
   "lockFileMaintenance": {
     "enabled": true,
