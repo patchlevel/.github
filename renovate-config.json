@@ -57,6 +57,13 @@
       ],
       "groupSlug": "symfony",
       "groupName": "Symfony packages"
+    },
+    {
+      "matchFileNames": [
+        "docs/requirements.txt"
+      ],
+      "groupSlug": "docs",
+      "groupName": "Docs dependencies"
     }
   ]
 }
