@@ -21,7 +21,10 @@
     "composer",
     "github-actions",
     "pip_requirements",
-    "terraform"
+    "terraform",
+    "docker",
+    "kubernetes",
+    "js"
   ],
   "lockFileMaintenance": {
     "enabled": true,
