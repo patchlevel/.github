@@ -17,20 +17,27 @@
     ":semanticCommitsDisabled"
   ],
   "commitBodyTable": true,
+  "configMigration": true,
   "enabledManagers": [
     "composer",
     "github-actions",
-    "pip_requirements",
     "terraform",
-    "docker",
-    "kubernetes",
-    "js"
+    "dockerfile",
+    "docker-compose",
+    "helmv3",
+    "helm-values",
+    "npm"
   ],
   "lockFileMaintenance": {
     "enabled": true,
     "extends": [
-      "schedule:daily"
+      "schedule:weekly"
     ]
+  },
+  "osvVulnerabilityAlerts": true,
+  "vulnerabilityAlerts": {
+    "labels": ["security"],
+    "automerge": true
   },
   "platformAutomerge": true,
   "rangeStrategy": "replace",
@@ -55,18 +62,16 @@
       "rangeStrategy": "widen"
     },
     {
-      "matchPackagePatterns": [
-        "^symfony/"
+      "matchPackageNames": [
+        "symfony/**"
       ],
       "groupSlug": "symfony",
       "groupName": "Symfony packages"
     },
     {
-      "matchFileNames": [
-        "docs/requirements.txt"
-      ],
-      "groupSlug": "docs",
-      "groupName": "Docs dependencies"
+      "description": "Minor bumps of 0.x packages are breaking, review them by hand",
+      "matchCurrentVersion": "/^0\\./",
+      "automerge": false
     }
   ]
 }
