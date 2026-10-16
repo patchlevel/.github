@@ -1,0 +1,45 @@
+# https://help.github.com/en/categories/automating-your-workflow-with-github-actions
+
+name: "Check Docs"
+
+on:
+  workflow_call:
+    inputs:
+      php-version:
+        description: "PHP version to run the docs check against"
+        type: string
+        default: "8.4"
+      phpcbf-exclude:
+        description: "Comma separated coding standard sniffs to exclude for the extracted docs code"
+        type: string
+        default: "SlevomatCodingStandard.TypeHints.DeclareStrictTypes"
+
+jobs:
+  checkdocs:
+    name: "Check Docs"
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v7
+
+      - name: "Install PHP"
+        uses: "shivammathur/setup-php@2.37.2"
+        with:
+          coverage: none
+          php-version: "${{ inputs.php-version }}"
+          ini-values: memory_limit=-1, opcache.enable_cli=1
+
+      - uses: ramsey/composer-install@4.0.0
+        with:
+          dependency-versions: "locked"
+
+      - name: "extract php code"
+        run: "vendor/bin/docs-extract-php-code"
+
+      - name: "lint php"
+        run: "php -l docs_php/*.php"
+
+      - name: "docs code style"
+        run: "vendor/bin/phpcbf docs_php --exclude=${{ inputs.phpcbf-exclude }}"
