@@ -14,8 +14,13 @@
     ":automergeMinor",
     ":automergeBranch",
     ":prNotPending",
-    ":semanticCommitsDisabled"
+    ":semanticCommitsDisabled",
+    "group:monorepos",
+    "group:recommended",
+    "security:minimumReleaseAgeNpm"
   ],
+  "prHourlyLimit": 2,
+  "branchConcurrentLimit": 10,
   "commitBodyTable": true,
   "configMigration": true,
   "enabledManagers": [
@@ -71,7 +76,33 @@
     {
       "description": "Minor bumps of 0.x packages are breaking, review them by hand",
       "matchCurrentVersion": "/^0\\./",
-      "automerge": false
+      "automerge": false,
+      "rebaseWhen": "conflicted"
+    },
+    {
+      "description": "Majors wait for a review, rebasing them after every merge to the base branch only burns CI minutes",
+      "matchUpdateTypes": [
+        "major"
+      ],
+      "rebaseWhen": "conflicted"
+    },
+    {
+      "matchManagers": [
+        "github-actions"
+      ],
+      "groupSlug": "github-actions",
+      "groupName": "GitHub Actions"
+    },
+    {
+      "matchPackageNames": [
+        "unified",
+        "remark",
+        "remark-*",
+        "rehype",
+        "rehype-*"
+      ],
+      "groupSlug": "unified",
+      "groupName": "unified packages"
     }
   ]
 }
